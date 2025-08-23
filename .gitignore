@@ -5,19 +5,29 @@ out/
 dist/
 build/
 .cache/
-.vscode/
-.vercel/
 .turbo/
-coverage/
+.vercel/
 
-# Logs & misc
+# IDE / Editor
+.vscode/
+.idea/
+
+# Coverage / Tests
+coverage/
+*.lcov
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 *.log
 
-# Env
+# Environment variables
 .env
 .env.*
 !.env.example
+
+# OS-specific
+.DS_Store
+Thumbs.db
