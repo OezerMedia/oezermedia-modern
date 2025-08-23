@@ -1,0 +1,381 @@
+/*
+ * Global stylesheet for the Özer Media website.
+ *
+ * The colour palette draws inspiration from night‑sky blues and warm golds to
+ * emphasise a premium, elegant feel. Base styles establish a solid
+ * typographic rhythm and make use of semantic HTML elements. Variables are
+ * defined at the root level to aid theme customisation and improve
+ * maintainability.
+ */
+
+/* Import elegante Schriften für Headlines und Fließtext */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+  /* Primary brand colours */
+  /* Vibrant, modern palette inspired by contemporary design */
+  /* Warm beige/cremefarbene Palette */
+  /* Modern, clean palette – Weiß mit sanften beigefarbenen Akzenten */
+  --color-primary: #3a3a3a; /* dunkles Anthrazit für Texte und Buttons */
+  --color-secondary: #c6a77d; /* sanftes Beige/Gold für Hover‑Effekte */
+  --color-accent: #e6d8c3; /* helles Beige als dezenter Hintergrund */
+  /* Neutrals */
+  --color-background: #ffffff; /* reines Weiß als Hauptfläche */
+  --color-surface: #f7f5f0; /* sehr helles Creme für Header/Footers */
+  --color-text: #333333; /* dunkles Grau für Fließtext */
+  --color-muted: #7c7c7c; /* neutrales Grau für sekundären Text */
+  /* Layout */
+  --max-width: 1200px;
+  --container-padding: 1rem;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  /* Entferne Unterstreichungen und ändere Linkfarbe subtil */
+  text-decoration: none;
+}
+
+/* Change link colour on hover/focus without shifting layout */
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: var(--color-secondary);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0.75rem 0;
+  color: var(--color-text);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+header,
+footer {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Header container styles */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+/* Logo text styling */
+.logo-text {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+/* Navigation list */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li {
+  margin: 0;
+}
+
+/* Active link styling */
+/* Style for active links */
+.nav-list .active-link {
+  font-weight: 600;
+}
+
+/* Navigation links styled as rounded boxes */
+/* Navigation links styled as subtle boxes */
+.nav-list li a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  background-color: transparent;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* Hover/focus/active state for navigation links */
+.nav-list li a:hover,
+.nav-list li a:focus,
+.nav-list .active-link {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  /* Stack header elements on small screens */
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /* Ensure nav spans full width under header */
+  header nav {
+    width: 100%;
+  }
+  /* Mobile nav list */
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Mobile menu toggle button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Burger lines */
+.menu-toggle .line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+/* Animate to cross when open */
+.menu-toggle.open .line1 {
+  transform: translateY(6px) rotate(45deg);
+}
+.menu-toggle.open .line2 {
+  opacity: 0;
+}
+.menu-toggle.open .line3 {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Responsive navigation: hide by default on narrow screens and show when toggled */
+@media (max-width: 600px) {
+  nav {
+    /* Hide nav by default; will be shown when JS adds the mobile-nav-open class */
+    display: none;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  nav.mobile-nav-open {
+    display: block;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+main {
+  padding: var(--container-padding);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--container-padding);
+}
+
+button {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+button:hover,
+button:focus {
+  background-color: var(--color-secondary);
+}
+
+/* Utility class to hide content visually but keep it accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Service section layout for responsive design */
+.service-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.service-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+@media (max-width: 600px) {
+  .service-section {
+    flex-direction: column;
+  }
+  .service-image {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Digital business card styles */
+.business-card {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  margin: 2rem auto;
+  text-align: center;
+}
+.logo-container {
+  margin-bottom: 1rem;
+}
+.logo {
+  border-radius: 50%;
+}
+.contact-info h2 {
+  margin-top: 0;
+  font-size: 1.75rem;
+}
+.contact-info p {
+  margin: 0.25rem 0;
+}
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.social-icons a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.social-icons a:hover,
+.social-icons a:focus {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+@media (max-width: 600px) {
+  .business-card {
+    padding: 1.5rem;
+  }
+  .contact-info h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Contact items for icons and text */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.contact-item svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-primary);
+  stroke-width: 1.5;
+}
+
+/* Contact details container */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+@media (min-width: 600px) {
+  .contact-details {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+}
