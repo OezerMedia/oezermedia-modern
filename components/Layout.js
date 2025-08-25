@@ -29,7 +29,7 @@ export default function Layout({ children, title, description }) {
     '@type': 'LocalBusiness',
     '@id': `${baseUrl}#localbusiness`,
     'name': 'Özer Media',
-    'image': `${baseUrl}/images/hero.png`,
+    'image': `${baseUrl}/images/fehlt.png`,
     'url': baseUrl,
     'telephone': '+4972539680725',
     'priceRange': '€€',
@@ -85,12 +85,12 @@ export default function Layout({ children, title, description }) {
         <meta property="og:url" content={canonical} />
         <meta property="og:site_name" content="Özer Media" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={`${baseUrl}/images/hero.png`} />
+        <meta property="og:image" content={`${baseUrl}/images/Ich_1.webp`} />
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={metaTitle} />
         <meta name="twitter:description" content={metaDesc} />
-        <meta name="twitter:image" content={`${baseUrl}/images/hero.png`} />
+        <meta name="twitter:image" content={`${baseUrl}/images/Ich_1.webp`} />
         {/* LocalBusiness structured data for GEO/AEO */}
         <script
           type="application/ld+json"

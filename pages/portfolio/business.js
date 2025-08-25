@@ -1,19 +1,14 @@
-import Gallery from '../../components/Gallery';
+import fs from 'fs'
+import path from 'path'
+import Gallery from '../../components/Gallery'
 
 /**
  * Portfolio detail page: Business.
  *
- * Unternehmen benötigen starke visuelle Botschaften. Auf dieser Seite
- * stellen wir vor, wie professionelle Fotos und Videos dabei helfen,
- * Marken aufzubauen, Vertrauen zu schaffen und Produkte sowie Teams ins
- * rechte Licht zu rücken. Die Platzhalterbilder können Sie durch Ihre
- * eigenen Businessfotos ersetzen.
+ * Alle Bilder aus public/images/businessImages werden automatisch
+ * eingelesen und an die Gallery-Komponente übergeben.
  */
-export default function Business() {
-  const images = Array.from({ length: 6 }).map(() => ({
-    src: '/images/business.png',
-    alt: 'Geometrisches blaues Muster als Platzhalter für Businessfotos',
-  }));
+export default function Business({ images }) {
   return (
     <div className="container" style={{ padding: '2rem 0' }}>
       <h1>Business</h1>
@@ -25,15 +20,31 @@ export default function Business() {
       </p>
       <Gallery images={images} />
     </div>
-  );
+  )
 }
 
 export async function getStaticProps() {
+  // Pfad zum Ordner mit den Bildern
+  const dir = path.join(process.cwd(), 'public/images/businessImages')
+
+  // Alle Dateien im Ordner auslesen
+  const files = fs.readdirSync(dir)
+
+  // Nur Bilddateien nehmen (jpg, jpeg, png, webp)
+  const allowed = /\.(jpg|jpeg|png|webp|gif)$/i
+  const images = files
+    .filter(file => allowed.test(file))
+    .map(file => ({
+      src: `/images/businessImages/${file}`,
+      alt: `Businessfoto ${file}`,
+    }))
+
   return {
     props: {
       title: 'Business',
       description:
         'Professionelle Businessfotografie und -videografie aus Walldorf – erstellen Sie aussagekräftige Unternehmensportraits, Teamfotos und Produktbilder.',
+      images,
     },
-  };
+  }
 }

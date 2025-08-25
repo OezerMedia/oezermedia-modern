@@ -28,7 +28,7 @@ export default function AboutUs() {
       <h2>Das Team</h2>
       {/* Bild als visuelle Ergänzung, symbolisiert unser eingespieltes Team */}
       <img
-        src="/images/team.png"
+        src="/images/Ich_1.webp"
         alt="Abstrakte Team-Silhouette, die das harmonische Zusammenspiel bei Özer Media symbolisiert"
         style={{ width: '100%', maxWidth: '400px', height: 'auto', margin: '1rem 0' }}
       />

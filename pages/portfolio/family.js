@@ -1,24 +1,17 @@
-import Gallery from '../../components/Gallery';
+import fs from "fs";
+import path from "path";
+import Gallery from "../../components/Gallery";
 
 /**
  * Portfolio detail page: Families.
- *
- * Diese Seite widmet sich der Familienfotografie. Wir möchten die
- * besondere Bindung zwischen Eltern, Kindern und Geschwistern sichtbar
- * machen. Die Galerie verwendet abstrakte Platzhalterbilder – ersetzen
- * Sie diese durch echte Familienfotos in Ihrem `public/images`‑Verzeichnis.
  */
-export default function Family() {
-  const images = Array.from({ length: 6 }).map(() => ({
-    src: '/images/family.png',
-    alt: 'Warme, organische Formen als Platzhalter für ein Familienfoto',
-  }));
+export default function Family({ images = [] }) {
   return (
-    <div className="container" style={{ padding: '2rem 0' }}>
+    <div className="container" style={{ padding: "2rem 0" }}>
       <h1>Familien</h1>
-      <p style={{ maxWidth: '700px' }}>
+      <p style={{ maxWidth: "700px" }}>
         Familienbilder sind Erinnerungen für die Ewigkeit. Ob Sie den
-        Zauber eines Neugeborenenfesthalten möchten oder ein fröhliches
+        Zauber eines Neugeborenen festhalten möchten oder ein fröhliches
         Familienshooting im Grünen planen – wir sorgen für eine entspannte
         Atmosphäre und echte Momente.
       </p>
@@ -28,11 +21,25 @@ export default function Family() {
 }
 
 export async function getStaticProps() {
+  const dir = path.join(process.cwd(), "public/images/familyImages");
+  const allowed = /\.(jpg|jpeg|png|webp|gif|avif)$/i;
+  let images = [];
+  try {
+    images = fs
+      .readdirSync(dir)
+      .filter((f) => allowed.test(f))
+      .map((f) => ({
+        src: `/images/familyImages/${f}`,
+        alt: `Familienfoto ${f}`,
+      }));
+  } catch {}
+
   return {
     props: {
-      title: 'Familien',
+      title: "Familien",
       description:
-        'Natürliche Familienfotografie in Walldorf – wir halten besondere Momente von Eltern, Kindern und Geschwistern in authentischen Bildern fest.',
+        "Natürliche Familienfotografie in Walldorf – wir halten besondere Momente von Eltern, Kindern und Geschwistern in authentischen Bildern fest.",
+      images,
     },
   };
 }

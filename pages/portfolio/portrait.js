@@ -1,23 +1,15 @@
-import Gallery from '../../components/Gallery';
+import fs from "fs";
+import path from "path";
+import Gallery from "../../components/Gallery";
 
 /**
  * Portfolio detail page: Portraits.
- *
- * Ausdrucksstarke Porträts zeigen Persönlichkeit und Charakter. Diese
- * Seite erläutert unseren Ansatz für individuelle Porträtfotografie. Die
- * gezeigten Bilder sind abstrakte Platzhalter – fügen Sie Ihre eigenen
- * Porträtaufnahmen in das Verzeichnis `public/images` ein, um reale
- * Beispiele zu präsentieren.
  */
-export default function Portrait() {
-  const images = Array.from({ length: 6 }).map(() => ({
-    src: '/images/portrait.png',
-    alt: 'Lebhafte Farbschlieren als Platzhalter für Porträtbilder',
-  }));
+export default function Portrait({ images = [] }) {
   return (
-    <div className="container" style={{ padding: '2rem 0' }}>
+    <div className="container" style={{ padding: "2rem 0" }}>
       <h1>Porträts</h1>
-      <p style={{ maxWidth: '700px' }}>
+      <p style={{ maxWidth: "700px" }}>
         Ein gutes Porträt zeigt mehr als ein Gesicht – es erzählt eine
         Geschichte. Wir nehmen uns Zeit, Sie kennenzulernen und erschaffen
         Bilder, die Ihre Persönlichkeit widerspiegeln. Ob klassisch,
@@ -29,11 +21,25 @@ export default function Portrait() {
 }
 
 export async function getStaticProps() {
+  const dir = path.join(process.cwd(), "public/images/portraitImages");
+  const allowed = /\.(jpg|jpeg|png|webp|gif|avif)$/i;
+  let images = [];
+  try {
+    images = fs
+      .readdirSync(dir)
+      .filter((f) => allowed.test(f))
+      .map((f) => ({
+        src: `/images/portraitImages/${f}`,
+        alt: `Porträt ${f}`,
+      }));
+  } catch {}
+
   return {
     props: {
-      title: 'Porträts',
+      title: "Porträts",
       description:
-        'Individuelle Porträtfotografie in Walldorf – zeigen Sie Ihre Persönlichkeit in ausdrucksstarken Bildern, die Ihre Geschichte erzählen.',
+        "Individuelle Porträtfotografie in Walldorf – zeigen Sie Ihre Persönlichkeit in ausdrucksstarken Bildern, die Ihre Geschichte erzählen.",
+      images,
     },
   };
 }

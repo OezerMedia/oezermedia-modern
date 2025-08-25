@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -27,10 +28,14 @@ export default function Header() {
       <div className="container header-container">
         {/* Logo */}
         <div className="logo-wrapper">
-          <Link href="/">
-            {/* Accessible logo text; replace with actual logo image if available */}
-            <span className="logo-text">Özer Media</span>
-            <span className="sr-only">Zur Startseite</span>
+          <Link href="/" aria-label="Zur Startseite">
+            <Image
+              src="/images/OezerMedia-Logo.svg"   // Pfad zu deinem Logo
+              alt="Özer Media Logo"
+              width={100}              // anpassen
+              height={25}              // anpassen
+              priority
+            />
           </Link>
         </div>
         {/* Mobile menu toggle button */}

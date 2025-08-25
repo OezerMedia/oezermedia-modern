@@ -28,7 +28,7 @@ export default function DigitalBusinessCard() {
       <div className="business-card">
         <div className="logo-container">
           <Image
-            src="/images/logo-placeholder.png"
+            src="/images/Ich_3.webp"
             alt="Özer Media Logo"
             width={120}
             height={120}
@@ -133,9 +133,9 @@ export default function DigitalBusinessCard() {
         }}
       >
         <div>
-          <h2>QR‑Code (Platzhalter)</h2>
+          <h2>Instagram via QR-Code</h2>
           <Image
-            src="/images/qr-placeholder.png"
+            src="/images/QR-Code_Insta-optimized.webp"
             alt="Platzhalter für einen QR‑Code der digitalen Visitenkarte"
             width={200}
             height={200}

@@ -24,7 +24,7 @@ export default function Services() {
       description:
         'Ob im Studio, bei Ihnen zu Hause oder draußen in der Natur – unsere entspannten Shootings fangen echte Momente zwischen Eltern, Kindern und Partnern ein.',
       href: '/portfolio/family',
-      image: '/images/family.png',
+      image: '/images/Portfolio_Family_Cover.webp',
       alt:
         'Sanfte Farbverläufe symbolisieren die Harmonie und Nähe von Familien und Paaren',
     },
@@ -33,7 +33,7 @@ export default function Services() {
       description:
         'Von professionellen Unternehmensporträts über Teamfotos bis zu Produktaufnahmen und Eventbegleitungen: wir setzen Ihr Unternehmen hochwertig in Szene.',
       href: '/portfolio/business',
-      image: '/images/business.png',
+      image: '/images/Portfolio_Unternehmen.webp',
       alt:
         'Geometrische Formen in Blau symbolisieren Professionalität für Businessfotografie',
     },
@@ -42,7 +42,7 @@ export default function Services() {
       description:
         'Individuelle Porträts, die Persönlichkeit und Charakter unterstreichen – ob für private Zwecke oder als berufliches Profilbild.',
       href: '/portfolio/portrait',
-      image: '/images/portrait.png',
+      image: '/images/Portfolio_Potrait_Cover.webp',
       alt:
         'Silhouette in kräftigen Farben steht für ausdrucksstarke Porträts',
     },
@@ -51,18 +51,9 @@ export default function Services() {
       description:
         'Neben Fotos erstellen wir auch filmische Inhalte wie Hochzeitsfilme, Imagevideos und Social‑Media‑Clips, die Ihre Botschaft bewegend erzählen.',
       href: null,
-      image: '/images/video.png',
+      image: '/images/Portfolio_Video_Cover.webp',
       alt:
         'Abstrakte Kamera in warmen Beigetönen symbolisiert die Videoproduktion',
-    },
-    {
-      title: 'Digitale Visitenkarte',
-      description:
-        'Mit unserer digitalen Visitenkarte stellen Sie sich modern vor: Alle wichtigen Kontaktdaten und Links in einem QR‑Code, ideal für Events und Netzwerktreffen.',
-      href: '/digital-business-card',
-      image: '/images/digital-card.png',
-      alt:
-        'Smartphone mit digitaler Visitenkarte, schlicht in Beige gehalten',
     },
   ];
   return (
