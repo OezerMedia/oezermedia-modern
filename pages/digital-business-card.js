@@ -141,25 +141,40 @@ export default function DigitalBusinessCard() {
             height={200}
           />
         </div>
-        <div style={{ flex: 1 }}>
-          <h2>vCard</h2>
-          <pre
-            style={{
-              background: 'var(--color-muted)',
-              padding: '1rem',
-              borderRadius: '4px',
-              overflowX: 'auto',
-            }}
-          >
+<div style={{ flex: 1 }}>
+  <h2>vCard</h2>
+  <pre
+    style={{
+      background: 'var(--color-muted)',
+      padding: '1rem',
+      borderRadius: '4px',
+      overflowX: 'auto',
+    }}
+  >
 {vcard}
-          </pre>
-          <p style={{ marginTop: '0.5rem' }}>
-            Kopieren Sie den obigen Text in eine Datei mit der Endung{' '}
-            <code>.vcf</code>, um die Visitenkarte zu speichern. Sie können
-            anschließend einen QR‑Code‑Generator nutzen, um einen echten
-            QR‑Code zu erstellen.
-          </p>
-        </div>
+  </pre>
+  <p style={{ marginTop: '0.5rem' }}>
+    Sie können diesen Datensatz als <code>.vcf</code>-Datei
+    herunterladen oder einen QR‑Code aus den vCard‑Daten erstellen,
+    um Ihre Kontaktdaten einfach zu teilen.
+  </p>
+  <a
+    href={`data:text/vcard;charset=utf-8,${encodeURIComponent(vcard)}`}
+    download="ozer-media.vcf"
+    style={{
+      display: 'inline-block',
+      marginTop: '0.5rem',
+      padding: '0.5rem 1rem',
+      borderRadius: '4px',
+      background: 'var(--color-primary)',
+      color: '#fff',
+      textDecoration: 'none',
+    }}
+  >
+    vCard herunterladen
+  </a>
+</div>
+
       </div>
     </div>
   );

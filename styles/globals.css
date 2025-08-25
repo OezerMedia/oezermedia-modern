@@ -379,3 +379,35 @@ button:focus {
     gap: 2rem;
   }
 }
+
+/* Responsive Kontaktformular */
+.contact-form {
+  max-width: 500px;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+@media (max-width: 600px) {
+  .contact-form {
+    max-width: 100%;
+  }
+}
+
+/* Neuer Header‑Aufbau mit harmonischen Abständen */
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+/* Navigation rückt auf Desktop an das Ende */
+.header-container nav {
+  margin-left: auto;
+}
+
+/* Auf kleinen Bildschirmen kein Einrücken */
+@media (max-width: 600px) {
+  .header-container nav {
+    margin-left: 0;
+  }
+}

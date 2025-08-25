@@ -102,7 +102,7 @@ export default function Contact() {
           <span>Steinacker II 22, 76684 Östringen</span>
         </div>
       </div>
-      <form onSubmit={handleSubmit} style={{ maxWidth: '500px', marginTop: '1.5rem' }}>
+      <form onSubmit={handleSubmit} className="contact-form">
         <div style={{ marginBottom: '1rem' }}>
           <label htmlFor="name">Name*</label>
           <input
