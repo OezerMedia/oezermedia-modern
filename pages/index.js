@@ -37,20 +37,29 @@ export default function Home() {
             </Link>
           </div>
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          style={{ marginTop: '2rem' }}
-        >
-          <Image
-            src="/images/Wedding_Images_17.webp"
-            width={960}
-            height={540}
-            alt="Abstrakte Fotografie mit dynamischen Lichteffekten"
-            priority
-          />
-        </motion.div>
+  <motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.5, duration: 1 }}
+  style={{
+    marginTop: '2rem',
+    position: 'relative',
+    width: '100vw',                         // volle Viewport-Breite
+    height: '60vh',                         // Höhe, z. B. 60 % der Fensterhöhe
+    marginLeft: 'calc(-50vw + 50%)',        // gleicht die horizontale Zentrierung aus
+    marginRight: 'calc(-50vw + 50%)',
+    overflow: 'hidden',
+  }}
+>
+  <Image
+    src="/images/Wedding_Images_17.webp"
+    alt="Stimmungsvolles Foto"
+    fill
+    priority
+    style={{ objectFit: 'cover' }}
+  />
+</motion.div>
+
       </section>
 
       {/* Feature cards */}
