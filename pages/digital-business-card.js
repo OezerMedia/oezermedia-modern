@@ -22,11 +22,11 @@ export default function DigitalBusinessCard() {
     'END:VCARD',
   ].join('\n');
   return (
-    <div className="container" style={{ padding: '2rem 0' }}>
+    <div className="container" style={{ padding: '2rem 0', marginTop: '2rem', textAlign: 'center' }}>
       <h1>Digitale Visitenkarte</h1>
       {/* Digitale Visitenkarte als stilvolles Card‑Layout */}
       <div className="business-card">
-        <div className="logo-container">
+        <div className="logo-container" style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
           <Image
             src="/images/Ich_3.webp"
             alt="Özer Media Logo"
@@ -39,7 +39,7 @@ export default function DigitalBusinessCard() {
           <h2>Özer Media</h2>
           <p>Foto‑ &amp; Videografie</p>
           {/* Adresse */}
-          <div className="contact-item">
+          <div className="contact-item" style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
             {/* Map pin icon */}
             <svg
               width="24"
@@ -57,7 +57,7 @@ export default function DigitalBusinessCard() {
             <span>Östringen, Deutschland</span>
           </div>
           {/* Telefon */}
-          <div className="contact-item">
+          <div className="contact-item" style={{ display: 'flex', justifyContent: 'center' }}>
             {/* Phone icon */}
             <svg
               width="24"
@@ -74,7 +74,7 @@ export default function DigitalBusinessCard() {
             <a href="tel:+4972539680725">+49 7253 9680725</a>
           </div>
           {/* E‑Mail */}
-          <div className="contact-item">
+          <div className="contact-item" style={{ display: 'flex', justifyContent: 'center' }}>
             {/* Envelope icon */}
             <svg
               width="24"
@@ -122,36 +122,40 @@ export default function DigitalBusinessCard() {
           </a>
         </div>
       </div>
-      {/* QR‑Code und vCard untereinander, zentriert */}
-<div style={{ marginTop: '2rem', textAlign: 'center' }}>
-  <h2>Instagram via QR‑Code</h2>
-  <Image
-    src="/images/QR-Code_Insta-optimized.webp"
-    alt="Platzhalter für einen QR‑Code"
-    width={200}
-    height={200}
-  />
-  <h2 style={{ marginTop: '1.5rem' }}>vCard</h2>
-  <p>
+      {/* QR-Code und vCard untereinander */}
+<div style={{ marginTop: '2rem' }}>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <Image
+      src="/images/QR-Code_Insta-optimized.webp"
+      alt="QR‑Code für Instagram"
+      width={200}
+      height={200}
+    />
+  </div>
+  <h2 style={{ textAlign: 'center', marginTop: '1.5rem' }}>vCard</h2>
+  <p style={{ textAlign: 'center' }}>
     Laden Sie die vCard-Datei herunter, um meine Kontaktdaten direkt in Ihr
     Adressbuch zu importieren.
   </p>
-  <a
-    href={`data:text/vcard;charset=utf-8,${encodeURIComponent(vcard)}`}
-    download="ozer-media.vcf"
-    style={{
-      display: 'inline-block',
-      marginTop: '0.5rem',
-      padding: '0.5rem 1rem',
-      borderRadius: '4px',
-      background: 'var(--color-primary)',
-      color: '#fff',
-      textDecoration: 'none',
-    }}
-  >
-    vCard herunterladen
-  </a>
+  <div style={{ textAlign: 'center' }}>
+    <a
+      href={`data:text/vcard;charset=utf-8,${encodeURIComponent(vcard)}`}
+      download="ozer-media.vcf"
+      style={{
+        display: 'inline-block',
+        marginTop: '0.5rem',
+        padding: '0.5rem 1rem',
+        borderRadius: '4px',
+        background: 'var(--color-primary)',
+        color: '#fff',
+        textDecoration: 'none',
+      }}
+    >
+      vCard herunterladen
+    </a>
+  </div>
 </div>
+
 
     </div>
   );
