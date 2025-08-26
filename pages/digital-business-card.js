@@ -122,41 +122,19 @@ export default function DigitalBusinessCard() {
           </a>
         </div>
       </div>
-      {/* QR‑Code und vCard nebeneinander mit flexibler Anordnung */}
-      <div
-        style={{
-          marginTop: '2rem',
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '2rem',
-          alignItems: 'flex-start',
-        }}
-      >
-        <div>
-          <h2>Instagram via QR-Code</h2>
-          <Image
-            src="/images/QR-Code_Insta-optimized.webp"
-            alt="Platzhalter für einen QR‑Code der digitalen Visitenkarte"
-            width={200}
-            height={200}
-          />
-        </div>
-<div style={{ flex: 1 }}>
-  <h2>vCard</h2>
-  <pre
-    style={{
-      background: 'var(--color-muted)',
-      padding: '1rem',
-      borderRadius: '4px',
-      overflowX: 'auto',
-    }}
-  >
-{vcard}
-  </pre>
-  <p style={{ marginTop: '0.5rem' }}>
-    Sie können diesen Datensatz als <code>.vcf</code>-Datei
-    herunterladen oder einen QR‑Code aus den vCard‑Daten erstellen,
-    um Ihre Kontaktdaten einfach zu teilen.
+      {/* QR‑Code und vCard untereinander, zentriert */}
+<div style={{ marginTop: '2rem', textAlign: 'center' }}>
+  <h2>Instagram via QR‑Code</h2>
+  <Image
+    src="/images/QR-Code_Insta-optimized.webp"
+    alt="Platzhalter für einen QR‑Code"
+    width={200}
+    height={200}
+  />
+  <h2 style={{ marginTop: '1.5rem' }}>vCard</h2>
+  <p>
+    Laden Sie die vCard-Datei herunter, um meine Kontaktdaten direkt in Ihr
+    Adressbuch zu importieren.
   </p>
   <a
     href={`data:text/vcard;charset=utf-8,${encodeURIComponent(vcard)}`}
@@ -175,7 +153,6 @@ export default function DigitalBusinessCard() {
   </a>
 </div>
 
-      </div>
     </div>
   );
 }

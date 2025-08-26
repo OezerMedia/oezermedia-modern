@@ -41,15 +41,11 @@ body {
 }
 
 a {
-  color: var(--color-primary);
   text-decoration: none;
+  transition: color 0.3s ease;
+  color: var(--color-primary);
 }
 
-a:hover,
-a:focus {
-  /* Entferne Unterstreichungen und ändere Linkfarbe subtil */
-  text-decoration: none;
-}
 
 /* Change link colour on hover/focus without shifting layout */
 a:hover,
@@ -389,6 +385,9 @@ button:focus {
 @media (max-width: 600px) {
   .contact-form {
     max-width: 100%;
+    padding-left: 1rem;  /* optionaler Innenabstand */
+    padding-right: 1rem;
+    box-sizing: border-box;
   }
 }
 
