@@ -1,0 +1,25 @@
+{
+  "name": "oezermedia-modern",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Modern Next.js implementation of the Özer Media website with SEO, GEO and AEO optimisations.",
+  "scripts": {
+    "dev": "CHOKIDAR_USEPOLLING=1 next dev",
+
+
+    "build:server": "next build",
+    "start": "next start -p 3000",
+
+
+    "build:static": "EXPORT=true next build",
+    "preview:static": "npx serve -s out -l 3000"
+  },
+  "dependencies": {
+    "eslint-config-next": "^15.5.0",
+    "framer-motion": "^11.0.28",
+    "next": "^15.5.0",
+    "nodemailer": "^7.0.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}
