@@ -1,86 +1,69 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 /**
- * Simple responsive gallery with lightbox functionality.
+ * Responsive Gallery mit Masonry-Layout (keine Lücken trotz Hoch-/Querformat)
+ * und Lightbox ohne Verzerrung/Zuschnitt/Balken.
  *
- * Accepts an array of image objects with `src` and `alt` properties. The
- * component renders a grid of thumbnails. When a thumbnail is clicked the
- * corresponding image opens in a full‑screen overlay. Clicking anywhere on
- * the overlay closes it. Alt text should follow the accessibility
- * recommendations from Level Access【102629046544748†L242-L268】 and be
- * concise yet descriptive.
- *
- * @param {{ images: { src: string, alt: string }[] }} props
+ * Erwartet: images = [{ src, alt }, ...]
  */
 export default function Gallery({ images }) {
   const [selected, setSelected] = useState(null);
 
-  const open = (img) => {
-    setSelected(img);
-  };
-
-  const close = () => {
-    setSelected(null);
-  };
+  // ESC zum Schließen der Lightbox
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && setSelected(null);
+    if (selected) window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selected]);
 
   return (
     <>
-      <div
-        className="gallery-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-          gap: '1rem',
-        }}
-      >
+      {/* Masonry-Container: packt Bilder ohne Lücken */}
+      <div className="masonry">
         {images.map((img, idx) => (
-          <button
-            key={idx}
-            onClick={() => open(img)}
-            style={{
-              border: 'none',
-              padding: 0,
-              background: 'none',
-              cursor: 'pointer',
-            }}
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={400}
-              height={300}
-              style={{ borderRadius: '4px' }}
-            />
-          </button>
+          <figure className="masonry-item" key={`${img.src}-${idx}`}>
+            <button
+              onClick={() => setSelected(img)}
+              style={{ all: 'unset', cursor: 'zoom-in', display: 'block' }}
+              aria-label="Bild vergrößern"
+            >
+              {/* WICHTIG: keine feste Höhe -> nie verzerren; Browser behält Seitenverhältnis */}
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={0}
+                height={0}
+                sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '4px' }}
+                priority={idx < 6}
+              />
+            </button>
+          </figure>
         ))}
       </div>
+
+      {/* Lightbox: skaliert Bild nur bis 95% des Viewports -> kein Zuschnitt, kein Balken */}
       {selected && (
         <div
-          onClick={close}
+          onClick={() => setSelected(null)}
           role="dialog"
           aria-modal="true"
           aria-label="Vergrößertes Bild anzeigen"
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            background: 'rgba(0, 0, 0, 0.8)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 1000,
-          }}
+          className="lb-backdrop"
         >
-          <Image
-            src={selected.src}
-            alt={selected.alt}
-            width={900}
-            height={600}
-            style={{ maxWidth: '90%', maxHeight: '90%', borderRadius: '4px' }}
-          />
+          <div className="lb-media" onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={selected.src}
+              alt={selected.alt}
+              width={0}
+              height={0}
+              sizes="100vw"
+              // keine feste Box; Bild skaliert intrinsisch -> immer korrektes Seitenverhältnis
+              style={{ width: 'auto', height: 'auto', maxWidth: '95vw', maxHeight: '95vh', display: 'block', borderRadius: '4px' }}
+              priority
+            />
+          </div>
         </div>
       )}
     </>
