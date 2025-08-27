@@ -37,7 +37,7 @@ export default function Portfolio() {
     {
       slug: 'portrait',
       title: 'Porträts',
-      description: 'Ausdrucksstarke Einzelporträts',
+      description: 'Ausdrucksstarke Einzelporträts mit Charakter',
       image: '/images/Portfolio_Potrait_Cover.webp',
       alt: 'Dynamische Farbschlieren für Porträtfotografie',
     },
