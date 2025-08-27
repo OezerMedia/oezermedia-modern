@@ -29,7 +29,7 @@ export default function Layout({ children, title, description }) {
     '@type': 'LocalBusiness',
     '@id': `${baseUrl}#localbusiness`,
     'name': 'Özer Media',
-    'image': `${baseUrl}/images/fehlt.png`,
+    'image': `${baseUrl}/images/Ich_1.webp`,
     'url': baseUrl,
     'telephone': '+4972539680725',
     'priceRange': '€€',
@@ -53,8 +53,8 @@ export default function Layout({ children, title, description }) {
     },
     'geo': {
       '@type': 'GeoCoordinates',
-      'latitude': 49.3053,
-      'longitude': 8.6420
+      'latitude': 49.2200416,
+      'longitude': 8.7124508
     },
     'openingHoursSpecification': [
       {

@@ -27,11 +27,18 @@ export default function AboutUs() {
       </p>
       <h2>Das Team</h2>
       {/* Bild als visuelle Ergänzung, symbolisiert unser eingespieltes Team */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+        <img
+          src="/images/Ich_1.webp"
+          alt="Abstrakte Team-Silhouette, die das harmonische Zusammenspiel mit Fotograf und Videograf bei Özer Media symbolisiert"
+          style={{ width: '100%', maxWidth: '400px', height: 'auto', margin: '1rem 0' }}
+      />
       <img
-        src="/images/Ich_1.webp"
-        alt="Abstrakte Team-Silhouette, die das harmonische Zusammenspiel bei Özer Media symbolisiert"
+        src="/images/Buki_1.webp"
+        alt="Abstrakte Team-Silhouette, die das harmonische Zusammenspiel mit Fotografin und Videograf bei Özer Media symbolisiert"
         style={{ width: '100%', maxWidth: '400px', height: 'auto', margin: '1rem 0' }}
       />
+      </div>
       <p>
         Hinter Özer Media steht ein kleines, eingespieltes Team aus
         Fotograf:innen und Videograf:innen. Wir arbeiten eng zusammen,
