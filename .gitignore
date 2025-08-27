@@ -31,3 +31,6 @@ pnpm-debug.log*
 # OS-specific
 .DS_Store
 Thumbs.db
+
+#zip-Files
+*.zip
